@@ -18,12 +18,13 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
   FocusNode usernameFocus = FocusNode();
   FocusNode passwordFocus = FocusNode();
+  var username = "";
+  var passwrd = "";
   LoginRequest loginRequest = LoginRequest(email: "", password: "");
-  late final _formKey;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
-    _formKey = GlobalKey<FormState>();
     super.initState();
   }
 
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
       final apiCallProvider = ref.watch(authenticateProvider.notifier);
       return InkWell(
         onTap: () {
-          if (_formKey.currenState.validate()) {
+          if (_formKey.currentState!.validate()) {
             apiCallProvider.callAuthenticationUserApi(loginRequest);
           }
         },
@@ -96,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                     usernameFocus.hasFocus ? Colors.white : Colors.transparent,
                 fontWeight: FontWeight.w500),
             labelText: "Email",
+            errorStyle: const TextStyle(color: Colors.white),
             labelStyle: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.w500),
             enabledBorder: OutlineInputBorder(
@@ -116,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                 !RegExp(r'^[\w-_\.]+@([\w-].)+[a-z]{2,5}').hasMatch(value)) {
               return 'Enter valid email id!!';
             }
-            loginRequest.copyWith(email: value);
+            username = value;
             return null;
           },
           onChanged: (value) => () {});
@@ -139,6 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                     usernameFocus.hasFocus ? Colors.white : Colors.transparent,
                 fontWeight: FontWeight.w500),
             labelText: "Password",
+            errorStyle: const TextStyle(color: Colors.white),
             labelStyle: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.w500),
             enabledBorder: OutlineInputBorder(
@@ -155,11 +158,12 @@ class _LoginPageState extends State<LoginPage> {
                 borderSide: const BorderSide(color: Colors.white)),
           ),
           validator: (value) {
-            if (value == null ||
-                !RegExp(r'^(?=.*[a-z])(?=.*?[0-9]).{8,}$').hasMatch(value)) {
+            if (value == null
+                // ||   !RegExp(r'^(?=.*[a-z])(?=.*?[0-9]).{8,}$').hasMatch(value)
+                ) {
               return 'Password must contain atleast 8 characters!!';
             }
-            loginRequest.copyWith(password: value);
+            passwrd = value;
             return null;
           },
           onChanged: (value) => () {});
@@ -181,13 +185,13 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               neoStoreText(),
-              Padding(padding: EdgeInsets.only(top: 148.h / 3)),
+              Padding(padding: EdgeInsets.only(top: 148.h)),
               email(),
-              Padding(padding: EdgeInsets.only(top: 60.h / 3)),
+              Padding(padding: EdgeInsets.only(top: 60.h)),
               password(),
-              Padding(padding: EdgeInsets.only(top: 100.h / 3)),
+              Padding(padding: EdgeInsets.only(top: 100.h)),
               loginButton(ref),
-              Padding(padding: EdgeInsets.only(top: 65.h / 3)),
+              Padding(padding: EdgeInsets.only(top: 65.h)),
               forgetPassword()
             ],
           ),
@@ -210,24 +214,27 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: loginForm(),
             ),
-            floatingActionButton: Row(
-              children: [
-                Expanded(child: dontHaveAccount()),
-                SizedBox(
-                  height: 138.h,
-                  width: 138.h,
-                  child: FloatingActionButton(
-                    onPressed: () {},
-                    elevation: 0,
-                    backgroundColor: Colors.red[700],
-                    shape: const BeveledRectangleBorder(
-                        borderRadius: BorderRadius.zero),
-                    child: const Icon(
-                      Icons.add,
+            floatingActionButton: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50),
+              child: Row(
+                children: [
+                  Expanded(child: dontHaveAccount()),
+                  SizedBox(
+                    height: 138.h,
+                    width: 138.h,
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      elevation: 0,
+                      backgroundColor: Colors.red[700],
+                      shape: const BeveledRectangleBorder(
+                          borderRadius: BorderRadius.zero),
+                      child: const Icon(
+                        Icons.add,
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           );
         });
