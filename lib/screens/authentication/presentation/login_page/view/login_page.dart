@@ -20,7 +20,10 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
   FocusNode usernameFocus = FocusNode();
   FocusNode passwordFocus = FocusNode();
+  var username = "";
+  var passwrd = "";
   LoginRequest loginRequest = LoginRequest(email: "", password: "");
+  final _formKey = GlobalKey<FormState>();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -122,6 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                     usernameFocus.hasFocus ? Colors.white : Colors.transparent,
                 fontWeight: FontWeight.w500),
             labelText: "Email",
+            errorStyle: const TextStyle(color: Colors.white),
             labelStyle: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.w500),
             enabledBorder: OutlineInputBorder(
@@ -165,6 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                     usernameFocus.hasFocus ? Colors.white : Colors.transparent,
                 fontWeight: FontWeight.w500),
             labelText: "Password",
+            errorStyle: const TextStyle(color: Colors.white),
             labelStyle: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.w500),
             enabledBorder: OutlineInputBorder(
@@ -181,8 +186,9 @@ class _LoginPageState extends State<LoginPage> {
                 borderSide: const BorderSide(color: Colors.white)),
           ),
           validator: (value) {
-            if (value == null ||
-                !RegExp(r'^(?=.*[a-z])(?=.*?[0-9]).{8,}$').hasMatch(value)) {
+            if (value == null
+                // ||   !RegExp(r'^(?=.*[a-z])(?=.*?[0-9]).{8,}$').hasMatch(value)
+                ) {
               return 'Password must contain atleast 8 characters!!';
             }
             loginRequest = loginRequest.copyWith(password: value);
@@ -213,11 +219,15 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               neoStoreText(),
               Padding(padding: EdgeInsets.only(top: 148.h)),
+              Padding(padding: EdgeInsets.only(top: 148.h)),
               email(),
+              Padding(padding: EdgeInsets.only(top: 60.h)),
               Padding(padding: EdgeInsets.only(top: 60.h)),
               password(),
               Padding(padding: EdgeInsets.only(top: 100.h)),
+              Padding(padding: EdgeInsets.only(top: 100.h)),
               loginButton(ref),
+              Padding(padding: EdgeInsets.only(top: 65.h)),
               Padding(padding: EdgeInsets.only(top: 65.h)),
               forgetPassword()
             ],
