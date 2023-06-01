@@ -11,6 +11,7 @@ class LoginStateNotifier extends StateNotifier<LoginState> {
   LoginStateNotifier({required this.loginUseCase}) : super(const LoginState());
 
   callAuthenticationUserApi(LoginRequest request) async {
+    state = state.copyWith(isLoading: true, status: Status.loading);
     final response = await loginUseCase.authorizeUserUseCase(request);
 
     switch (response.status) {

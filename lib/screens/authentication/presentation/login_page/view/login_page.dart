@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neostore_app/config/common_api_status_model.dart';
 import 'package:neostore_app/screens/authentication/presentation/login_page/model/login_request.dart';
+import 'package:neostore_app/screens/authentication/presentation/login_page/model/login_state.dart';
+import 'package:neostore_app/utils/toast.dart';
 
 import '../provider/login_state_notifier.dart';
 
@@ -19,12 +21,32 @@ class _LoginPageState extends State<LoginPage> {
   FocusNode usernameFocus = FocusNode();
   FocusNode passwordFocus = FocusNode();
   LoginRequest loginRequest = LoginRequest(email: "", password: "");
-  late final _formKey;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
-    _formKey = GlobalKey<FormState>();
     super.initState();
+  }
+
+  void event(LoginState state) {
+    switch (state.status) {
+      case Status.error:
+        {
+          CustomToast.showToast("Error Occurred!!!");
+          break;
+        }
+      case Status.failure:
+        {
+          CustomToast.showToast(state.errorMsg);
+          break;
+        }
+      case Status.success:
+        {
+          break;
+        }
+      default:
+        {}
+    }
   }
 
   @override
@@ -43,10 +65,12 @@ class _LoginPageState extends State<LoginPage> {
 
     Widget loginButton(WidgetRef ref) {
       final apiCallProvider = ref.watch(authenticateProvider.notifier);
+      final LoginState loginState = ref.watch(authenticateProvider);
       return InkWell(
-        onTap: () {
-          if (_formKey.currenState.validate()) {
-            apiCallProvider.callAuthenticationUserApi(loginRequest);
+        onTap: () async {
+          if (_formKey.currentState!.validate()) {
+            await apiCallProvider.callAuthenticationUserApi(loginRequest);
+            event(loginState);
           }
         },
         child: Container(
@@ -55,9 +79,11 @@ class _LoginPageState extends State<LoginPage> {
             decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(5.0))),
-            child: apiCallProvider.state.status == Status.loading
-                ? const CircularProgressIndicator(
-                    color: Color(0xffE91C1A),
+            child: loginState.status == Status.loading
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xffE91C1A),
+                    ),
                   )
                 : Center(
                     child: Text(
@@ -116,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                 !RegExp(r'^[\w-_\.]+@([\w-].)+[a-z]{2,5}').hasMatch(value)) {
               return 'Enter valid email id!!';
             }
-            loginRequest.copyWith(email: value);
+            loginRequest = loginRequest.copyWith(email: value);
             return null;
           },
           onChanged: (value) => () {});
@@ -159,17 +185,22 @@ class _LoginPageState extends State<LoginPage> {
                 !RegExp(r'^(?=.*[a-z])(?=.*?[0-9]).{8,}$').hasMatch(value)) {
               return 'Password must contain atleast 8 characters!!';
             }
-            loginRequest.copyWith(password: value);
+            loginRequest = loginRequest.copyWith(password: value);
             return null;
           },
           onChanged: (value) => () {});
     }
 
     Widget dontHaveAccount() {
-      return Text(
-        "DON'T HAVE AN ACCOUNT?",
-        style: TextStyle(
-            color: Colors.white, fontWeight: FontWeight.w500, fontSize: 48.sp),
+      return SizedBox(
+        width: double.infinity,
+        child: Text(
+          "DON'T HAVE AN ACCOUNT?",
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              fontSize: 48.sp),
+        ),
       );
     }
 
@@ -181,13 +212,13 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               neoStoreText(),
-              Padding(padding: EdgeInsets.only(top: 148.h / 3)),
+              Padding(padding: EdgeInsets.only(top: 148.h)),
               email(),
-              Padding(padding: EdgeInsets.only(top: 60.h / 3)),
+              Padding(padding: EdgeInsets.only(top: 60.h)),
               password(),
-              Padding(padding: EdgeInsets.only(top: 100.h / 3)),
+              Padding(padding: EdgeInsets.only(top: 100.h)),
               loginButton(ref),
-              Padding(padding: EdgeInsets.only(top: 65.h / 3)),
+              Padding(padding: EdgeInsets.only(top: 65.h)),
               forgetPassword()
             ],
           ),
@@ -202,32 +233,36 @@ class _LoginPageState extends State<LoginPage> {
             resizeToAvoidBottomInset: false,
             body: Container(
               height: ScreenUtil().screenHeight,
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+              padding: EdgeInsets.symmetric(horizontal: 50.h, vertical: 75.h),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/bg_img.jpeg'),
                     fit: BoxFit.cover),
               ),
-              child: loginForm(),
+              child: Column(
+                children: [
+                  Expanded(
+                      child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 50.h),
+                    child: loginForm(),
+                  )),
+                  dontHaveAccount()
+                ],
+              ),
             ),
-            floatingActionButton: Row(
-              children: [
-                Expanded(child: dontHaveAccount()),
-                SizedBox(
-                  height: 138.h,
-                  width: 138.h,
-                  child: FloatingActionButton(
-                    onPressed: () {},
-                    elevation: 0,
-                    backgroundColor: Colors.red[700],
-                    shape: const BeveledRectangleBorder(
-                        borderRadius: BorderRadius.zero),
-                    child: const Icon(
-                      Icons.add,
-                    ),
-                  ),
-                )
-              ],
+            floatingActionButton: SizedBox(
+              height: 138.h,
+              width: 138.h,
+              child: FloatingActionButton(
+                onPressed: () {},
+                elevation: 0,
+                backgroundColor: Colors.red[700],
+                shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.zero),
+                child: const Icon(
+                  Icons.add,
+                ),
+              ),
             ),
           );
         });
