@@ -24,7 +24,6 @@ class _LoginPageState extends State<LoginPage> {
   var passwrd = "";
   LoginRequest loginRequest = LoginRequest(email: "", password: "");
   final _formKey = GlobalKey<FormState>();
-  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -219,15 +218,11 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               neoStoreText(),
               Padding(padding: EdgeInsets.only(top: 148.h)),
-              Padding(padding: EdgeInsets.only(top: 148.h)),
               email(),
-              Padding(padding: EdgeInsets.only(top: 60.h)),
               Padding(padding: EdgeInsets.only(top: 60.h)),
               password(),
               Padding(padding: EdgeInsets.only(top: 100.h)),
-              Padding(padding: EdgeInsets.only(top: 100.h)),
               loginButton(ref),
-              Padding(padding: EdgeInsets.only(top: 65.h)),
               Padding(padding: EdgeInsets.only(top: 65.h)),
               forgetPassword()
             ],
