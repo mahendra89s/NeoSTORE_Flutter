@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   FocusNode passwordFocus = FocusNode();
   var username = "";
   var passwrd = "";
-  LoginRequest loginRequest = LoginRequest(email: "", password: "");
+  LoginRequest loginRequest = const LoginRequest(email: "", password: "");
   final _formKey = GlobalKey<FormState>();
 
   @override

@@ -34,8 +34,10 @@ mixin _$LoginResponseData {
   String? get username => throw _privateConstructorUsedError;
   @JsonKey(name: 'gender')
   String? get gender => throw _privateConstructorUsedError;
+  @JsonKey(name: 'dob')
+  String? get dob => throw _privateConstructorUsedError;
   @JsonKey(name: 'phone_no')
-  int? get phoneNo => throw _privateConstructorUsedError;
+  String? get phoneNo => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_active')
   bool? get isActive => throw _privateConstructorUsedError;
   @JsonKey(name: 'createdata')
@@ -65,7 +67,8 @@ abstract class $LoginResponseDataCopyWith<$Res> {
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'username') String? username,
       @JsonKey(name: 'gender') String? gender,
-      @JsonKey(name: 'phone_no') int? phoneNo,
+      @JsonKey(name: 'dob') String? dob,
+      @JsonKey(name: 'phone_no') String? phoneNo,
       @JsonKey(name: 'is_active') bool? isActive,
       @JsonKey(name: 'createdata') String? created,
       @JsonKey(name: 'modified') String? modified,
@@ -92,6 +95,7 @@ class _$LoginResponseDataCopyWithImpl<$Res, $Val extends LoginResponseData>
     Object? email = freezed,
     Object? username = freezed,
     Object? gender = freezed,
+    Object? dob = freezed,
     Object? phoneNo = freezed,
     Object? isActive = freezed,
     Object? created = freezed,
@@ -127,10 +131,14 @@ class _$LoginResponseDataCopyWithImpl<$Res, $Val extends LoginResponseData>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String?,
+      dob: freezed == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
+              as String?,
       phoneNo: freezed == phoneNo
           ? _value.phoneNo
           : phoneNo // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       isActive: freezed == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -167,7 +175,8 @@ abstract class _$$_LoginResponseDataCopyWith<$Res>
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'username') String? username,
       @JsonKey(name: 'gender') String? gender,
-      @JsonKey(name: 'phone_no') int? phoneNo,
+      @JsonKey(name: 'dob') String? dob,
+      @JsonKey(name: 'phone_no') String? phoneNo,
       @JsonKey(name: 'is_active') bool? isActive,
       @JsonKey(name: 'createdata') String? created,
       @JsonKey(name: 'modified') String? modified,
@@ -192,6 +201,7 @@ class __$$_LoginResponseDataCopyWithImpl<$Res>
     Object? email = freezed,
     Object? username = freezed,
     Object? gender = freezed,
+    Object? dob = freezed,
     Object? phoneNo = freezed,
     Object? isActive = freezed,
     Object? created = freezed,
@@ -227,10 +237,14 @@ class __$$_LoginResponseDataCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String?,
+      dob: freezed == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
+              as String?,
       phoneNo: freezed == phoneNo
           ? _value.phoneNo
           : phoneNo // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       isActive: freezed == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -262,6 +276,7 @@ class _$_LoginResponseData implements _LoginResponseData {
       @JsonKey(name: 'email') this.email,
       @JsonKey(name: 'username') this.username,
       @JsonKey(name: 'gender') this.gender,
+      @JsonKey(name: 'dob') this.dob,
       @JsonKey(name: 'phone_no') this.phoneNo,
       @JsonKey(name: 'is_active') this.isActive,
       @JsonKey(name: 'createdata') this.created,
@@ -293,8 +308,11 @@ class _$_LoginResponseData implements _LoginResponseData {
   @JsonKey(name: 'gender')
   final String? gender;
   @override
+  @JsonKey(name: 'dob')
+  final String? dob;
+  @override
   @JsonKey(name: 'phone_no')
-  final int? phoneNo;
+  final String? phoneNo;
   @override
   @JsonKey(name: 'is_active')
   final bool? isActive;
@@ -310,7 +328,7 @@ class _$_LoginResponseData implements _LoginResponseData {
 
   @override
   String toString() {
-    return 'LoginResponseData(id: $id, roleId: $roleId, firstName: $firstName, lastName: $lastName, email: $email, username: $username, gender: $gender, phoneNo: $phoneNo, isActive: $isActive, created: $created, modified: $modified, accessToken: $accessToken)';
+    return 'LoginResponseData(id: $id, roleId: $roleId, firstName: $firstName, lastName: $lastName, email: $email, username: $username, gender: $gender, dob: $dob, phoneNo: $phoneNo, isActive: $isActive, created: $created, modified: $modified, accessToken: $accessToken)';
   }
 
   @override
@@ -328,6 +346,7 @@ class _$_LoginResponseData implements _LoginResponseData {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.dob, dob) || other.dob == dob) &&
             (identical(other.phoneNo, phoneNo) || other.phoneNo == phoneNo) &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
@@ -349,6 +368,7 @@ class _$_LoginResponseData implements _LoginResponseData {
       email,
       username,
       gender,
+      dob,
       phoneNo,
       isActive,
       created,
@@ -379,7 +399,8 @@ abstract class _LoginResponseData implements LoginResponseData {
           @JsonKey(name: 'email') final String? email,
           @JsonKey(name: 'username') final String? username,
           @JsonKey(name: 'gender') final String? gender,
-          @JsonKey(name: 'phone_no') final int? phoneNo,
+          @JsonKey(name: 'dob') final String? dob,
+          @JsonKey(name: 'phone_no') final String? phoneNo,
           @JsonKey(name: 'is_active') final bool? isActive,
           @JsonKey(name: 'createdata') final String? created,
           @JsonKey(name: 'modified') final String? modified,
@@ -411,8 +432,11 @@ abstract class _LoginResponseData implements LoginResponseData {
   @JsonKey(name: 'gender')
   String? get gender;
   @override
+  @JsonKey(name: 'dob')
+  String? get dob;
+  @override
   @JsonKey(name: 'phone_no')
-  int? get phoneNo;
+  String? get phoneNo;
   @override
   @JsonKey(name: 'is_active')
   bool? get isActive;

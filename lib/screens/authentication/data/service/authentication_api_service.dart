@@ -25,6 +25,7 @@ class AuthenticationApiService {
           }
       }
     } catch (e) {
+      e;
       return CommonApiStatus.error();
     }
   }

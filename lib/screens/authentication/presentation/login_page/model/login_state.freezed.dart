@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginState {
-  LoginRequest? get data => throw _privateConstructorUsedError;
+  LoginResponse? get data => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String get errorMsg => throw _privateConstructorUsedError;
   Status? get status => throw _privateConstructorUsedError;
@@ -33,9 +33,9 @@ abstract class $LoginStateCopyWith<$Res> {
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
   $Res call(
-      {LoginRequest? data, bool isLoading, String errorMsg, Status? status});
+      {LoginResponse? data, bool isLoading, String errorMsg, Status? status});
 
-  $LoginRequestCopyWith<$Res>? get data;
+  $LoginResponseCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as LoginRequest?,
+              as LoginResponse?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -78,12 +78,12 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
 
   @override
   @pragma('vm:prefer-inline')
-  $LoginRequestCopyWith<$Res>? get data {
+  $LoginResponseCopyWith<$Res>? get data {
     if (_value.data == null) {
       return null;
     }
 
-    return $LoginRequestCopyWith<$Res>(_value.data!, (value) {
+    return $LoginResponseCopyWith<$Res>(_value.data!, (value) {
       return _then(_value.copyWith(data: value) as $Val);
     });
   }
@@ -98,10 +98,10 @@ abstract class _$$_LoginStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {LoginRequest? data, bool isLoading, String errorMsg, Status? status});
+      {LoginResponse? data, bool isLoading, String errorMsg, Status? status});
 
   @override
-  $LoginRequestCopyWith<$Res>? get data;
+  $LoginResponseCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$_LoginStateCopyWithImpl<$Res>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as LoginRequest?,
+              as LoginResponse?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -149,7 +149,7 @@ class _$_LoginState extends _LoginState {
       : super._();
 
   @override
-  final LoginRequest? data;
+  final LoginResponse? data;
   @override
   @JsonKey()
   final bool isLoading;
@@ -190,14 +190,14 @@ class _$_LoginState extends _LoginState {
 
 abstract class _LoginState extends LoginState {
   const factory _LoginState(
-      {final LoginRequest? data,
+      {final LoginResponse? data,
       final bool isLoading,
       final String errorMsg,
       final Status? status}) = _$_LoginState;
   const _LoginState._() : super._();
 
   @override
-  LoginRequest? get data;
+  LoginResponse? get data;
   @override
   bool get isLoading;
   @override
