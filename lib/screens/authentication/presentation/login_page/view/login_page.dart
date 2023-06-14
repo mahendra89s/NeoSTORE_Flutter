@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neostore_app/config/common_api_status_model.dart';
+import 'package:neostore_app/route/route_constants.dart';
 import 'package:neostore_app/screens/authentication/presentation/login_page/model/login_request.dart';
 import 'package:neostore_app/screens/authentication/presentation/login_page/model/login_state.dart';
 import 'package:neostore_app/utils/toast.dart';
@@ -259,7 +260,9 @@ class _LoginPageState extends State<LoginPage> {
               height: 138.h,
               width: 138.h,
               child: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, RouteConstants.signUpRoute);
+                },
                 elevation: 0,
                 backgroundColor: Colors.red[700],
                 shape: const BeveledRectangleBorder(

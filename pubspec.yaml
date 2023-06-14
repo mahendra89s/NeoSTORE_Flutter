@@ -41,6 +41,7 @@ dependencies:
   json_annotation: ^4.8.1
   flutter_riverpod: ^2.3.6
   fluttertoast: ^8.2.2
+  shared_preferences: ^2.1.2
 
 dev_dependencies:
   flutter_test:

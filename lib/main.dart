@@ -4,8 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neostore_app/screens/authentication/presentation/login_page/view/login_page.dart';
 import 'package:neostore_app/route/route_constants.dart';
 import 'package:neostore_app/route/route_generator.dart';
+import 'package:neostore_app/shared_preferences/user_shared_preference.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreference.init();
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -24,7 +27,9 @@ class MyApp extends StatelessWidget {
         ),
         home: const LoginPage(),
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteConstants.loginRoute,
+        initialRoute: UserPreference.getIsUserLoggedIn()
+            ? RouteConstants.loginRoute
+            : RouteConstants.homeRoute,
         onGenerateRoute: RouteGenerator.generateRoute,
       );
     });
