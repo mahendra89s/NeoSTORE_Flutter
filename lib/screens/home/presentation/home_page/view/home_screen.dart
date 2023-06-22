@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
     super.initState();
@@ -26,12 +27,15 @@ class _HomeScreenState extends State<HomeScreen> {
       )
     ];
 
-    void menuClicked() {}
+    menuClicked() {
+      _scaffoldkey.currentState?.openDrawer();
+    }
 
     return ScreenUtilInit(
         designSize: const Size(1080, 1920),
         builder: (_, child) {
           return Scaffold(
+            key: _scaffoldkey,
             appBar: MyAppBar(
               widgets: widget,
               title: StringResources.neoStore,

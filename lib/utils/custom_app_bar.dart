@@ -8,7 +8,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final AppBar appBar;
   final List<Widget> widgets;
   final bool? isMenu;
-  final Function? menuIconClicked;
+  final Function()? menuIconClicked;
   const MyAppBar(
       {Key? key,
       required this.widgets,
