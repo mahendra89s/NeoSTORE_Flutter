@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neostore_app/route/route_constants.dart';
 import 'package:neostore_app/shared_preferences/user_shared_preference.dart';
@@ -7,15 +8,16 @@ import 'package:neostore_app/utils/string_resources.dart';
 
 import '../../../authentication/presentation/login_page/model/login_response_data.dart';
 import '../common_model/drawer_model.dart';
+import '../home_page/provider/home_provider.dart';
 
-class MyDrawer extends StatefulWidget {
+class MyDrawer extends ConsumerStatefulWidget {
   const MyDrawer({super.key});
 
   @override
-  State<MyDrawer> createState() => _MyDrawerState();
+  ConsumerState<MyDrawer> createState() => _MyDrawerState();
 }
 
-class _MyDrawerState extends State<MyDrawer> {
+class _MyDrawerState extends ConsumerState<MyDrawer> {
   LoginResponseData? userData;
   int? cartCount = 0;
 
@@ -106,8 +108,10 @@ class _MyDrawerState extends State<MyDrawer> {
         route: RouteConstants.homeRoute),
   ];
   @override
-  void initState() {
+  void initState() async {
     super.initState();
+    final apiCallProvider = ref.watch(getUserDataProvider.notifier);
+    await apiCallProvider.callUserDataApi();
     userData = UserPreference.getUserData();
     cartCount = UserPreference.getNoOfCart();
     drawerList[0].cartCount = cartCount;
