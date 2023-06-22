@@ -4,4 +4,5 @@ class Constant {
   static const String USER_LOGIN_URL = "users/login";
 
   static const String USER_REGISTER_URL = "users/register";
+  static const String USER_DATA = "users/getUserData";
 }

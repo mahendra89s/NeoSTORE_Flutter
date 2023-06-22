@@ -19,6 +19,9 @@ class AuthenticationApiService {
       switch (data.status) {
         case 200:
           {
+            await UserPreference.setUser(data);
+            await UserPreference.setIsUserLoggedIn(
+                data.data?.accessToken ?? "");
             return CommonApiStatus.success(data: data);
           }
         default:
@@ -42,7 +45,8 @@ class AuthenticationApiService {
         case 200:
           {
             await UserPreference.setUser(data);
-            await UserPreference.setIsUserLoggedIn();
+            await UserPreference.setIsUserLoggedIn(
+                data.data?.accessToken ?? "");
             return CommonApiStatus.success(data: data);
           }
         default:

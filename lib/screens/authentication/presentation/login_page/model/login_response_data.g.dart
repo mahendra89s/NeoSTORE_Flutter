@@ -21,6 +21,8 @@ _$_LoginResponseData _$$_LoginResponseDataFromJson(Map<String, dynamic> json) =>
       created: json['createdata'] as String?,
       modified: json['modified'] as String?,
       accessToken: json['access_token'] as String?,
+      countryId: json['country_id'] as String?,
+      profilePic: json['profile_pic'] as String?,
     );
 
 Map<String, dynamic> _$$_LoginResponseDataToJson(
@@ -39,4 +41,6 @@ Map<String, dynamic> _$$_LoginResponseDataToJson(
       'createdata': instance.created,
       'modified': instance.modified,
       'access_token': instance.accessToken,
+      'country_id': instance.countryId,
+      'profile_pic': instance.profilePic,
     };

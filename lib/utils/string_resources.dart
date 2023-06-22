@@ -11,4 +11,13 @@ class StringResources {
   static String password = "Password";
   static String confirmPassword = "Confirm Password";
   static String phoneNumber = "Phone Number";
+  static String myCart = "My Cart";
+  static String tables = "Tables";
+  static String sofas = "Sofas";
+  static String chairs = "Chairs";
+  static String cupboards = "Cupboards";
+  static String myAccount = "My Account";
+  static String storeLocator = "Store Locator";
+  static String myOrders = "My Orders";
+  static String logout = "Logout";
 }

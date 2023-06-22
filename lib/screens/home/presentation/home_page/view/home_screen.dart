@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:neostore_app/screens/home/presentation/utils/my_drawer.dart';
 import 'package:neostore_app/utils/custom_app_bar.dart';
 import 'package:neostore_app/utils/string_resources.dart';
 
@@ -11,6 +12,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> widget = [
@@ -28,11 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
           return Scaffold(
             appBar: MyAppBar(
               widgets: widget,
-              title: StringResources.register,
+              title: StringResources.neoStore,
               appBar: AppBar(),
               isMenu: true,
               menuIconClicked: menuClicked,
             ),
+            drawer: MyDrawer(),
           );
         });
   }

@@ -46,6 +46,10 @@ mixin _$LoginResponseData {
   String? get modified => throw _privateConstructorUsedError;
   @JsonKey(name: 'access_token')
   String? get accessToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'country_id')
+  String? get countryId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_pic')
+  String? get profilePic => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,7 +76,9 @@ abstract class $LoginResponseDataCopyWith<$Res> {
       @JsonKey(name: 'is_active') bool? isActive,
       @JsonKey(name: 'createdata') String? created,
       @JsonKey(name: 'modified') String? modified,
-      @JsonKey(name: 'access_token') String? accessToken});
+      @JsonKey(name: 'access_token') String? accessToken,
+      @JsonKey(name: 'country_id') String? countryId,
+      @JsonKey(name: 'profile_pic') String? profilePic});
 }
 
 /// @nodoc
@@ -101,6 +107,8 @@ class _$LoginResponseDataCopyWithImpl<$Res, $Val extends LoginResponseData>
     Object? created = freezed,
     Object? modified = freezed,
     Object? accessToken = freezed,
+    Object? countryId = freezed,
+    Object? profilePic = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -155,6 +163,14 @@ class _$LoginResponseDataCopyWithImpl<$Res, $Val extends LoginResponseData>
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      countryId: freezed == countryId
+          ? _value.countryId
+          : countryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePic: freezed == profilePic
+          ? _value.profilePic
+          : profilePic // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -180,7 +196,9 @@ abstract class _$$_LoginResponseDataCopyWith<$Res>
       @JsonKey(name: 'is_active') bool? isActive,
       @JsonKey(name: 'createdata') String? created,
       @JsonKey(name: 'modified') String? modified,
-      @JsonKey(name: 'access_token') String? accessToken});
+      @JsonKey(name: 'access_token') String? accessToken,
+      @JsonKey(name: 'country_id') String? countryId,
+      @JsonKey(name: 'profile_pic') String? profilePic});
 }
 
 /// @nodoc
@@ -207,6 +225,8 @@ class __$$_LoginResponseDataCopyWithImpl<$Res>
     Object? created = freezed,
     Object? modified = freezed,
     Object? accessToken = freezed,
+    Object? countryId = freezed,
+    Object? profilePic = freezed,
   }) {
     return _then(_$_LoginResponseData(
       id: freezed == id
@@ -261,6 +281,14 @@ class __$$_LoginResponseDataCopyWithImpl<$Res>
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      countryId: freezed == countryId
+          ? _value.countryId
+          : countryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePic: freezed == profilePic
+          ? _value.profilePic
+          : profilePic // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -281,7 +309,9 @@ class _$_LoginResponseData implements _LoginResponseData {
       @JsonKey(name: 'is_active') this.isActive,
       @JsonKey(name: 'createdata') this.created,
       @JsonKey(name: 'modified') this.modified,
-      @JsonKey(name: 'access_token') this.accessToken});
+      @JsonKey(name: 'access_token') this.accessToken,
+      @JsonKey(name: 'country_id') this.countryId,
+      @JsonKey(name: 'profile_pic') this.profilePic});
 
   factory _$_LoginResponseData.fromJson(Map<String, dynamic> json) =>
       _$$_LoginResponseDataFromJson(json);
@@ -325,10 +355,16 @@ class _$_LoginResponseData implements _LoginResponseData {
   @override
   @JsonKey(name: 'access_token')
   final String? accessToken;
+  @override
+  @JsonKey(name: 'country_id')
+  final String? countryId;
+  @override
+  @JsonKey(name: 'profile_pic')
+  final String? profilePic;
 
   @override
   String toString() {
-    return 'LoginResponseData(id: $id, roleId: $roleId, firstName: $firstName, lastName: $lastName, email: $email, username: $username, gender: $gender, dob: $dob, phoneNo: $phoneNo, isActive: $isActive, created: $created, modified: $modified, accessToken: $accessToken)';
+    return 'LoginResponseData(id: $id, roleId: $roleId, firstName: $firstName, lastName: $lastName, email: $email, username: $username, gender: $gender, dob: $dob, phoneNo: $phoneNo, isActive: $isActive, created: $created, modified: $modified, accessToken: $accessToken, countryId: $countryId, profilePic: $profilePic)';
   }
 
   @override
@@ -354,7 +390,11 @@ class _$_LoginResponseData implements _LoginResponseData {
             (identical(other.modified, modified) ||
                 other.modified == modified) &&
             (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken));
+                other.accessToken == accessToken) &&
+            (identical(other.countryId, countryId) ||
+                other.countryId == countryId) &&
+            (identical(other.profilePic, profilePic) ||
+                other.profilePic == profilePic));
   }
 
   @JsonKey(ignore: true)
@@ -373,7 +413,9 @@ class _$_LoginResponseData implements _LoginResponseData {
       isActive,
       created,
       modified,
-      accessToken);
+      accessToken,
+      countryId,
+      profilePic);
 
   @JsonKey(ignore: true)
   @override
@@ -404,7 +446,9 @@ abstract class _LoginResponseData implements LoginResponseData {
           @JsonKey(name: 'is_active') final bool? isActive,
           @JsonKey(name: 'createdata') final String? created,
           @JsonKey(name: 'modified') final String? modified,
-          @JsonKey(name: 'access_token') final String? accessToken}) =
+          @JsonKey(name: 'access_token') final String? accessToken,
+          @JsonKey(name: 'country_id') final String? countryId,
+          @JsonKey(name: 'profile_pic') final String? profilePic}) =
       _$_LoginResponseData;
 
   factory _LoginResponseData.fromJson(Map<String, dynamic> json) =
@@ -449,6 +493,12 @@ abstract class _LoginResponseData implements LoginResponseData {
   @override
   @JsonKey(name: 'access_token')
   String? get accessToken;
+  @override
+  @JsonKey(name: 'country_id')
+  String? get countryId;
+  @override
+  @JsonKey(name: 'profile_pic')
+  String? get profilePic;
   @override
   @JsonKey(ignore: true)
   _$$_LoginResponseDataCopyWith<_$_LoginResponseData> get copyWith =>

@@ -45,6 +45,8 @@ class _LoginPageState extends State<LoginPage> {
         }
       case Status.success:
         {
+          Navigator.pushNamedAndRemoveUntil(context, RouteConstants.homeRoute,
+              (Route<dynamic> route) => false);
           break;
         }
       default:
