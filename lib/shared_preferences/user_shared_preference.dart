@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:neostore_app/screens/home/presentation/common_model/product_categories.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/authentication/presentation/login_page/model/login_response.dart';
@@ -13,6 +14,7 @@ class UserPreference {
   static const _accessToken = "accessToken";
   static const _userData = "userData";
   static const _noOfCart = "noOfCart";
+  static const _productCategories = "categories";
   static Future init() async {
     _preferences = await SharedPreferences.getInstance();
   }
@@ -61,4 +63,19 @@ class UserPreference {
   }
 
   static int getNoOfCart() => _preferences?.getInt(_noOfCart) ?? 0;
+
+  static List<ProductCategories>? getProductCategories() {
+    try {
+      final data = _preferences?.getString(_productCategories) ?? "";
+      return (jsonDecode(data) as List<dynamic>)
+          .map<ProductCategories>((item) => ProductCategories.fromJson(item))
+          .toList();
+    } catch (e) {
+      null;
+    }
+  }
+
+  static void setProductCategories(List<ProductCategories>? products) async {
+    await _preferences?.setString(_productCategories, jsonEncode(products));
+  }
 }

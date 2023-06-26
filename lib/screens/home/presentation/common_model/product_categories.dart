@@ -8,7 +8,7 @@ class ProductCategories with _$ProductCategories {
   const factory ProductCategories(
     @JsonKey(name: 'id') int? id,
     @JsonKey(name: 'name') String? name,
-    @JsonKey(name: 'iconImage') String? iconImage,
+    @JsonKey(name: 'icon_image') String? iconImage,
     @JsonKey(name: 'created') String? created,
     @JsonKey(name: 'modified') String? modified,
   ) = _ProductCategories;

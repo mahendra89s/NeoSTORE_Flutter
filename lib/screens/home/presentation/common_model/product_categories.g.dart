@@ -10,7 +10,7 @@ _$_ProductCategories _$$_ProductCategoriesFromJson(Map<String, dynamic> json) =>
     _$_ProductCategories(
       json['id'] as int?,
       json['name'] as String?,
-      json['iconImage'] as String?,
+      json['icon_image'] as String?,
       json['created'] as String?,
       json['modified'] as String?,
     );
@@ -20,7 +20,7 @@ Map<String, dynamic> _$$_ProductCategoriesToJson(
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'iconImage': instance.iconImage,
+      'icon_image': instance.iconImage,
       'created': instance.created,
       'modified': instance.modified,
     };

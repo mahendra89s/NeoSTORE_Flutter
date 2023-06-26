@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
         home: const LoginPage(),
         debugShowCheckedModeBanner: false,
         initialRoute: UserPreference.getIsUserLoggedIn()
-            ? RouteConstants.loginRoute
-            : RouteConstants.homeRoute,
+            ? RouteConstants.homeRoute
+            : RouteConstants.loginRoute,
         onGenerateRoute: RouteGenerator.generateRoute,
       );
     });

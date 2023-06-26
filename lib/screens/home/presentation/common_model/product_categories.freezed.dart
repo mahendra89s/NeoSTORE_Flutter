@@ -24,7 +24,7 @@ mixin _$ProductCategories {
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'iconImage')
+  @JsonKey(name: 'icon_image')
   String? get iconImage => throw _privateConstructorUsedError;
   @JsonKey(name: 'created')
   String? get created => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $ProductCategoriesCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'iconImage') String? iconImage,
+      @JsonKey(name: 'icon_image') String? iconImage,
       @JsonKey(name: 'created') String? created,
       @JsonKey(name: 'modified') String? modified});
 }
@@ -106,7 +106,7 @@ abstract class _$$_ProductCategoriesCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'iconImage') String? iconImage,
+      @JsonKey(name: 'icon_image') String? iconImage,
       @JsonKey(name: 'created') String? created,
       @JsonKey(name: 'modified') String? modified});
 }
@@ -159,7 +159,7 @@ class _$_ProductCategories implements _ProductCategories {
   const _$_ProductCategories(
       @JsonKey(name: 'id') this.id,
       @JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'iconImage') this.iconImage,
+      @JsonKey(name: 'icon_image') this.iconImage,
       @JsonKey(name: 'created') this.created,
       @JsonKey(name: 'modified') this.modified);
 
@@ -173,7 +173,7 @@ class _$_ProductCategories implements _ProductCategories {
   @JsonKey(name: 'name')
   final String? name;
   @override
-  @JsonKey(name: 'iconImage')
+  @JsonKey(name: 'icon_image')
   final String? iconImage;
   @override
   @JsonKey(name: 'created')
@@ -225,7 +225,7 @@ abstract class _ProductCategories implements ProductCategories {
   const factory _ProductCategories(
       @JsonKey(name: 'id') final int? id,
       @JsonKey(name: 'name') final String? name,
-      @JsonKey(name: 'iconImage') final String? iconImage,
+      @JsonKey(name: 'icon_image') final String? iconImage,
       @JsonKey(name: 'created') final String? created,
       @JsonKey(name: 'modified') final String? modified) = _$_ProductCategories;
 
@@ -239,7 +239,7 @@ abstract class _ProductCategories implements ProductCategories {
   @JsonKey(name: 'name')
   String? get name;
   @override
-  @JsonKey(name: 'iconImage')
+  @JsonKey(name: 'icon_image')
   String? get iconImage;
   @override
   @JsonKey(name: 'created')

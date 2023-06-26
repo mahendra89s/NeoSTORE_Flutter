@@ -11,17 +11,19 @@ class ApiService {
   Future<CommonApiStatus> getUserDetails() async {
     try {
       const user = Constant.BASE_URL + Constant.USER_DATA;
+      print("URL" + user);
       Map<String, String> header = {
         "access_token": UserPreference.getAccessToken()
       };
-      final response = await http.post(Uri.parse(user), headers: header);
-
+      final response = await http.get(Uri.parse(user), headers: header);
+      print(response);
       final data = UserModelResponse.fromJson(jsonDecode(response.body));
       switch (data.status) {
         case 200:
           {
             UserPreference.setUserData(jsonEncode(data.data?.data));
             UserPreference.setNoOfCart(data.data?.totalCarts ?? 0);
+            UserPreference.setProductCategories(data.data?.productCategories);
             return CommonApiStatus.success(data: data);
           }
         default:

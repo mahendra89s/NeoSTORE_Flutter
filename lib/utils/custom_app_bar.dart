@@ -8,8 +8,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final AppBar appBar;
   final List<Widget> widgets;
   final bool? isMenu;
-  final Function()? menuIconClicked;
-  const MyAppBar(
+  Function? menuIconClicked;
+  MyAppBar(
       {Key? key,
       required this.widgets,
       required this.title,
@@ -20,18 +20,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: isMenu == true
+      leading: isMenu == false
           ? IconButton(
-              onPressed: () {
-                menuIconClicked;
-              },
-              icon: const Icon(Icons.menu_outlined))
-          : IconButton(
               icon: const Icon(Icons.arrow_back_ios),
               onPressed: () {
                 Navigator.pop(context);
               },
-            ),
+            )
+          : null,
       title: Text(
         title,
         style: TextStyle(

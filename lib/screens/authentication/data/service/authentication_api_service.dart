@@ -22,6 +22,7 @@ class AuthenticationApiService {
             await UserPreference.setUser(data);
             await UserPreference.setIsUserLoggedIn(
                 data.data?.accessToken ?? "");
+            await UserPreference.setAccessToken(data.data?.accessToken ?? "");
             return CommonApiStatus.success(data: data);
           }
         default:
@@ -47,6 +48,7 @@ class AuthenticationApiService {
             await UserPreference.setUser(data);
             await UserPreference.setIsUserLoggedIn(
                 data.data?.accessToken ?? "");
+            await UserPreference.setAccessToken(data.data?.accessToken ?? "");
             return CommonApiStatus.success(data: data);
           }
         default:
